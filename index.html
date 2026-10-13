@@ -1,0 +1,866 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bday kejuu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink: #FFE58A;
+  --pink-dark: #D9A928;
+  --pink-light: #FFFBE8;
+  --text: #79602D;
+  --border: #F4D56B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #FFF0B8;
+  font-family: 'Fredoka', sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background:
+    linear-gradient(
+      rgba(255, 250, 220, .72),
+      rgba(255, 250, 220, .72)
+    ),
+    url("background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.phone {
+  width: 100%;
+  max-width: 360px;
+  min-height: 500px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+  box-shadow: none;
+}
+
+.page {
+  display: none;
+  width: 100%;
+  min-height: 500px;
+  padding: 14px 18px;
+  text-align: center;
+  position: relative;
+  animation: fade .45s ease;
+}
+
+.page.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+#page1 {
+  background: rgba(255, 251, 232, .96);
+  border: 3px solid var(--border);
+  border-radius: 28px;
+  height: 500px;
+  min-height: 500px;
+  box-shadow: 0 15px 45px rgba(180, 140, 30, .15);
+}
+
+#page2,
+#page3,
+#page4,
+#page5,
+#page6,
+#page7,
+#page8 {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* HIASAN BACKGROUND */
+
+.bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: .8;
+}
+
+.bg span {
+  position: absolute;
+  color: #E9C84E;
+  font-size: 24px;
+  animation: float 5s ease-in-out infinite;
+}
+
+.bg span:nth-child(1) {
+  top: 8%;
+  left: 8%;
+}
+
+.bg span:nth-child(2) {
+  top: 20%;
+  right: 8%;
+  animation-delay: 1s;
+}
+
+.bg span:nth-child(3) {
+  top: 45%;
+  left: 5%;
+  animation-delay: 2s;
+}
+
+.bg span:nth-child(4) {
+  top: 60%;
+  right: 5%;
+  animation-delay: .5s;
+}
+
+.bg span:nth-child(5) {
+  bottom: 10%;
+  left: 12%;
+  animation-delay: 1.5s;
+}
+
+.bg span:nth-child(6) {
+  bottom: 18%;
+  right: 15%;
+  animation-delay: 2.5s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(5deg);
+  }
+}
+
+/* TEKS */
+
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 26px;
+  line-height: 1.15;
+  color: var(--pink-dark);
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.small {
+  font-size: 13px;
+  opacity: .75;
+}
+
+/* FOTO */
+
+.photo {
+  width: 100%;
+  height: 125px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 4px solid white;
+  box-shadow: 0 8px 20px rgba(190, 150, 50, .12);
+  margin-bottom: 10px;
+}
+
+.character {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin: 10px auto;
+  display: block;
+}
+
+/* TOMBOL */
+
+.btn {
+  background: #FFE58A;
+  color: #85651D;
+  border: 2px solid #F0CF55;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 5px 12px rgba(180, 140, 30, .12);
+  transition: .2s;
+  margin: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: #FFDA63;
+}
+
+.btn:active {
+  transform: scale(.96);
+}
+
+.btn.white {
+  background: #FFFDF4;
+  border-color: #F4DFA0;
+  color: #85651D;
+}
+
+/* PASSWORD */
+
+.password-title {
+  margin-top: 2px;
+}
+
+.password-title h1 {
+  font-size: 23px;
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.password-title p {
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.pass-display {
+  font-size: 19px;
+  letter-spacing: 6px;
+  color: #D9A928;
+  height: 25px;
+  margin: 4px 0 12px;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  max-width: 300px;
+  margin: auto;
+}
+
+.key {
+  height: 43px;
+  border-radius: 13px;
+  background: #FFFDF4;
+  border: 2px solid #F4DFA0;
+  color: #927125;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 18px;
+  box-shadow: 0 4px 8px rgba(180, 140, 30, .05);
+  transition: .15s;
+  cursor: pointer;
+}
+
+.key:hover {
+  background: #FFF2BD;
+}
+
+.key:active {
+  transform: scale(.94);
+  background: #FFE58A;
+}
+
+.hint {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #B99535;
+}
+
+/* PILIHAN */
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.options .btn {
+  font-size: 13px;
+  padding: 10px 14px;
+}
+
+/* KOTAK PESAN */
+
+.message-box {
+  background: rgba(255, 253, 240, .82);
+  border: 2px solid #F4DFA0;
+  border-radius: 22px;
+  padding: 18px 16px;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(180, 140, 30, .08);
+  margin-top: 12px;
+  max-height: 310px;
+  overflow-y: auto;
+}
+
+.message-box p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.message-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* LOVE BERTERBANGAN */
+
+.heart {
+  position: fixed;
+  bottom: -40px;
+  left: 0;
+  font-size: 20px;
+  pointer-events: none;
+  z-index: 999;
+  animation: loveFloat 5s ease-in forwards;
+  filter: drop-shadow(0 3px 5px rgba(210, 165, 40, .15));
+}
+
+@keyframes loveFloat {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg) scale(.5);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(-80px) translateX(5px) rotate(-10deg) scale(1);
+  }
+  40% {
+    transform: translateY(-280px) translateX(-25px) rotate(15deg) scale(1.1);
+  }
+  70% {
+    transform: translateY(-500px) translateX(25px) rotate(-15deg) scale(.9);
+    opacity: .9;
+  }
+  100% {
+    transform: translateY(-850px) translateX(-10px) rotate(25deg) scale(.7);
+    opacity: 0;
+  }
+}
+
+/* MUSIK */
+
+.music-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 55px;
+  height: 55px;
+  border: none;
+  border-radius: 50%;
+  background: #E8BE43;
+  color: white;
+  font-size: 23px;
+  z-index: 999;
+  box-shadow: 0 5px 20px rgba(180, 140, 30, .25);
+  display: none;
+  cursor: pointer;
+}
+
+.music-btn.show {
+  display: block;
+}
+
+.music-btn.playing {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 500px) {
+  .app {
+    padding: 0;
+  }
+
+  .phone {
+    width: 100%;
+    max-width: 360px;
+    min-height: 500px;
+  }
+
+  #page1 {
+    height: 500px;
+    min-height: 500px;
+    border-radius: 28px;
+  }
+
+  #page2,
+  #page3,
+  #page4,
+  #page5,
+  #page6,
+  #page7,
+  #page8 {
+    min-height: 500px;
+    padding: 14px 18px;
+  }
+
+  .photo {
+    height: 125px;
+  }
+
+  h1 {
+    font-size: 23px;
+  }
+
+  .message-box {
+    padding: 18px 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .phone {
+    max-width: 340px;
+  }
+
+  #page1 {
+    height: 500px;
+    min-height: 500px;
+  }
+
+  .page {
+    padding: 12px 14px;
+  }
+
+  .photo {
+    height: 115px;
+  }
+
+  .keypad {
+    gap: 7px;
+  }
+
+  .key {
+    height: 40px;
+    font-size: 17px;
+  }
+}
+
+#page1 .photo {
+  display: block;
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+  margin: 10px auto 12px;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+<div class="phone">
+
+<div class="bg">
+  <span>♡</span>
+  <span>✦</span>
+  <span>♡</span>
+  <span>✧</span>
+  <span>♡</span>
+  <span>✦</span>
+</div>
+
+<!-- PAGE 1: PASSWORD -->
+
+<section class="page active" id="page1">
+<div class="content">
+
+  <div class="password-title">
+    <h1>ayoo angg tebak<br>passwordnyaa!!</h1>
+    <p>kalo salah, ga hebat kamuu</p>
+  </div>
+
+  <img src="icon6.webp" class="photo" alt="Foto kita">
+
+  <div class="pass-display" id="passDisplay">♡♡♡♡</div>
+
+  <div class="keypad">
+    <button class="key" onclick="pressKey('1')">1</button>
+    <button class="key" onclick="pressKey('2')">2</button>
+    <button class="key" onclick="pressKey('3')">3</button>
+    <button class="key" onclick="pressKey('4')">4</button>
+    <button class="key" onclick="pressKey('5')">5</button>
+    <button class="key" onclick="pressKey('6')">6</button>
+    <button class="key" onclick="pressKey('7')">7</button>
+    <button class="key" onclick="pressKey('8')">8</button>
+    <button class="key" onclick="pressKey('9')">9</button>
+    <button class="key" onclick="pressKey('0')" style="grid-column:2">0</button>
+  </div>
+
+  <p class="hint">hint: historic date🤍</p>
+
+</div>
+</section>
+
+<!-- PAGE 2 -->
+
+<section class="page" id="page2">
+<div class="content">
+  <img src="icon1.webp" class="character" alt="Karakter lucu">
+  <h1 style="color:#333;">anjayy bisa<br>kebukaaa!</h1>
+  <button class="btn" onclick="nextPage(3); startMusic();">
+    tap disinii 🤍
+  </button>
+</div>
+</section>
+
+<!-- PAGE 3 -->
+
+<section class="page" id="page3">
+<div class="content">
+  <img src="icon2.webp" class="character" alt="Karakter lucu">
+  <h2>kejuuu hehe, udaa siap ma kadonyaa?</h2>
+
+  <div class="options">
+    <button class="btn" onclick="nextPage(4)">
+      soOo excited!~&gt;^&lt;
+    </button>
+    <button class="btn white" onclick="tease()">
+      ga ah males
+    </button>
+  </div>
+
+  <p class="small" id="teaseText"></p>
+</div>
+</section>
+
+<!-- PAGE 4 -->
+
+<section class="page" id="page4">
+<div class="content">
+  <img src="icon3.webp" class="character" alt="Karakter lucu">
+  <h2>yeayy terimakasih<br>udah menjawab!!!</h2>
+  <p>oke, last one i made something<br> for u angg, siapp yowww....</p>
+  <button class="btn" onclick="nextPage(5)">
+    okee bucukk
+  </button>
+</div>
+</section>
+
+<!-- PAGE 5 -->
+
+<section class="page" id="page5">
+<div class="content">
+  <img src="icon4.webp" class="character" alt="Karakter lucu">
+  <h1>eyyoowww<br>HAPPY BIRTHDAY FOR MY FAVORITE EX <3!!</h1>
+  <p> i hope this day will bring u lots of happiness and fun. i love u, always </p>
+  <button class="btn" onclick="nextPage(6)">
+    next surprise 🤍
+  </button>
+</div>
+</section>
+
+<!-- PAGE 6 -->
+
+<section class="page" id="page6">
+<div class="content">
+
+  <h1>happy your day</h1>
+  <p style="font-size:16px;">tap play music &lt;3</p>
+
+  <button class="btn" onclick="startMusic();">
+    ♪ ♡ ✦
+  </button>
+
+  <div class="message-box">
+    <p><b> happy birthday yaa my fav kejuu hehe</b></p>
+
+    <p>
+      aku harap semua keinginan dan cita cita mu tercapai. 
+    </p>
+
+    <p>
+      semoga dengan bertambahnya umur kamu kali ini kamu bisa lebih bersikap dewasa dari sebelumnya, lebih bahagia dari sebelumnya, lebih penyabar dari sebelumnya, diberi kesehatan serta umur yang panjang, tambah ganteng manis dan menawan, terimakasih atas segala sesuatu selama inii, aku bersyukur kita pernah bersama, maaf kalo pas bersama aku kurang ngertiin kamu aku kurang baik untuk kamu aku minta maaf, sekarang aku berharap kamu selalu bahagia dan baik baik saja, seberat apapun masalahmu jangan pernah dipendam sendiri dan tidurmu tidak terlarut malam, jaga kesehatan kurangi rokoknyaa, kalau kamu butuh apa apa ada aku disini, i am proud of you pokoknya wish you all the best dan have a nice dayy, kita berawal dari dua orang asing kemudian kembali lagi menjadi orang asing dengan sejuta kenangan, kisah kita singkat namun melekat, aku harap jika in another life itu beneran ada aku mau kamu sekali lagi. 
+    </p>
+
+    <p>
+      hehe udaa udaa pokoknyaa hbd, hbd, hbd
+    </p>
+
+
+    <p style="text-align:center; margin-top:25px;">
+      i love you, always 🤍
+    </p>
+  </div>
+
+  <button class="btn" onclick="nextPage(7)">
+    next surprise 🤍
+  </button>
+
+</div>
+</section>
+
+<!-- PAGE 7 -->
+
+<section class="page" id="page7">
+<div class="content">
+  <img src="icon5.webp" class="character" alt="Karakter lucu">
+  <h1>HAPPY<br>BIRTHDAY🤍</h1>
+
+  <p>
+    semoga kita selalu punya alasan<br>
+    buat tetap memilih satu sama lain.
+  </p>
+
+  <p>
+    makasih ya udah jadi bagian<br>
+    paling hangat di hidup aku.
+  </p>
+
+  <button class="btn" onclick="nextPage(8)">
+    last one ♡
+  </button>
+</div>
+</section>
+
+<!-- PAGE 8 -->
+
+<section class="page" id="page8">
+<div class="content">
+  <img src="icon7.webp" class="character" alt="Karakter lucu">
+  <h1>i love you,<br>now and always.</h1>
+
+  <p>jangan lupa senyum hari ini yaa.</p>
+
+  <p style="font-size:18px;">
+    -dari orang yg selalu kangen kamu dan gatau kapan bisa lupain semua tentang kita ☺️
+  </p>
+
+  <button class="btn" onclick="location.reload()">
+    replay ♡
+  </button>
+</div>
+</section>
+
+</div>
+</div>
+
+<!-- MUSIK -->
+
+<audio id="music" loop preload="auto">
+  <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Putar atau hentikan musik">♪</button>
+
+<script>
+let currentPage = 1;
+let password = "";
+let checkingPassword = false;
+
+const correctPassword = "2203";
+
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+
+music.volume = 0.7;
+
+/* PINDAH HALAMAN */
+
+function nextPage(page) {
+  document.querySelectorAll(".page").forEach(p => {
+    p.classList.remove("active");
+  });
+
+  const target = document.getElementById("page" + page);
+
+  if (!target) return;
+
+  target.classList.add("active");
+  currentPage = page;
+
+  if (page > 1) {
+    musicBtn.classList.add("show");
+  }
+
+  if ([2, 3, 4, 5, 7, 8].includes(page)) {
+    createHearts(10);
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* PASSWORD */
+
+function pressKey(num) {
+  if (checkingPassword || password.length >= 4) return;
+
+  password += num;
+
+  document.getElementById("passDisplay").textContent =
+    "●".repeat(password.length) +
+    "♡".repeat(4 - password.length);
+
+  if (password.length === 4) {
+    checkingPassword = true;
+
+    setTimeout(() => {
+      if (password === correctPassword) {
+        nextPage(2);
+        startMusic();
+        createHearts(18);
+      } else {
+        alert("salahh iihh😭 coba lagi yaa!");
+        password = "";
+        document.getElementById("passDisplay").textContent = "♡♡♡♡";
+      }
+
+      checkingPassword = false;
+    }, 300);
+  }
+}
+
+/* MUSIK */
+
+function startMusic() {
+  music.play()
+    .then(() => {
+      musicBtn.classList.add("playing");
+      musicBtn.textContent = "♪";
+    })
+    .catch(() => {
+      musicBtn.classList.remove("playing");
+    });
+}
+
+function toggleMusic() {
+  if (music.paused) {
+    startMusic();
+  } else {
+    music.pause();
+    musicBtn.classList.remove("playing");
+  }
+}
+
+/*
+  Browser biasanya memblokir autoplay bersuara.
+  Musik akan dicoba saat halaman dibuka dan diputar
+  setelah interaksi pertama pengguna.
+*/
+
+window.addEventListener("load", () => {
+  startMusic();
+});
+
+function unlockMusic() {
+  if (music.paused) startMusic();
+}
+
+document.addEventListener("pointerdown", unlockMusic, { once: true });
+
+/* TOMBOL ISENG */
+
+function tease() {
+  document.getElementById("teaseText").textContent =
+    "parah ih ko males, tap yg excited ga 😒";
+}
+
+/* LOVE BERTERBANGAN */
+
+function createHearts(amount = 12) {
+  const hearts = ["💛", "💛", "♡", "♥︎", "✦"];
+
+  for (let i = 0; i < amount; i++) {
+    setTimeout(() => {
+      const heart = document.createElement("div");
+
+      heart.className = "heart";
+      heart.textContent =
+        hearts[Math.floor(Math.random() * hearts.length)];
+
+      heart.style.left = (Math.random() * 100) + "vw";
+      heart.style.fontSize = (14 + Math.random() * 16) + "px";
+      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }, i * 180);
+  }
+}
+
+/* LOVE MUNCUL BERKALA */
+
+setInterval(() => {
+  if (currentPage > 1) {
+    createHearts(4);
+  }
+}, 9000);
+</script>
+
+</body>
+</html>
